@@ -10,7 +10,7 @@ class Cookie {
       date.setTime(date.getTime() + (minutes * 60 * 1000));
       expires = `expires=${date.toGMTString()}; `;
     }
-    document.cookie = `${this.prefix()}${name}=${value}; ${expires}path=${path}; SameSite=Lax`;
+    document.cookie = `${this.prefix()}${name}=${value}; ${expires}path=${path}; SameSite=None; Secure`;
   }
 
   static get(name) {
@@ -20,6 +20,16 @@ class Cookie {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1);
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    if (window.ppxdigital_cookies) {
+      for (var i=0; i<window.ppxdigital_cookies.length; i++) {
+        var c = window.ppxdigital_cookies[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) {
+          this.set(name, c.substring(name.length,c.length));
+          return c.substring(name.length,c.length);
+        }
+      }
     }
     return;
   }
