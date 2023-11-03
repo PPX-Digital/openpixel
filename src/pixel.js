@@ -21,6 +21,7 @@ class Pixel {
     return {
       id:                   () => Config.id, // website Id
       uid:                  () => Cookie.get('uid'), // user Id
+      eid:                  () => Cookie.get('eid'), // event Id
       ev:                   () => this.event, // event being triggered
       ed:                   () => this.optional, // any event data to pass along
       v:                    () => Config.version, // openpixel.js version
