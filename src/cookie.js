@@ -21,9 +21,9 @@ class Cookie {
         while (c.charAt(0)==' ') c = c.substring(1);
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
     }
-    if (window.ppxdigital_cookies) {
-      for (var i=0; i<window.ppxdigital_cookies.length; i++) {
-        var c = window.ppxdigital_cookies[i];
+    if (window.uptick_cookies) {
+      for (var i=0; i<window.uptick_cookies.length; i++) {
+        var c = window.uptick_cookies[i];
         while (c.charAt(0)==' ') c = c.substring(1);
         if (c.indexOf(name) == 0) {
           this.set(name, c.substring(name.length,c.length));
